@@ -1,2 +1,0 @@
-# Nexora
-Nexora(SaaS Project)
