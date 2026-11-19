@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#17645F" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg" />
+  <title>Create Account — Nexora SaaS Platform</title>
+  <meta name="description" content="Create your free Nexora account and start managing projects and tasks with your team." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-page="signup">
+  <!-- Ambient Glassmorphism Background Orbs -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb orb-teal"></div>
+    <div class="ambient-orb orb-coral"></div>
+    <div class="ambient-orb orb-ivory"></div>
+  </div>
+
+  <!-- Top Utility Bar -->
+  <header class="auth-topbar">
+    <a href="login.html" class="brand-logo">
+      <div class="brand-icon" style="width: 38px; height: 38px; border-radius: var(--radius-sm); background: transparent; overflow: hidden; padding: 0; flex-shrink: 0;">
+        <img src="assets/icons/icon.svg" alt="Nexora Logo" class="brand-logo-img" style="width: 100%; height: 100%; display: block; object-fit: cover;" />
+      </div>
+      <div class="brand-text">
+        <span class="brand-name" style="color: var(--text-primary);">Nexora</span>
+        <span class="brand-tagline" style="color: var(--text-secondary);">Plan smarter.</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <button id="auth-theme-toggle" class="icon-btn glass-icon-btn" type="button" title="Toggle Theme" aria-label="Toggle Theme">
+        <i data-lucide="moon" id="auth-theme-icon"></i>
+      </button>
+      <a href="login.html" class="btn btn-glass btn-sm">Sign In</a>
+    </div>
+  </header>
+
+  <!-- Main Split Auth Wrapper -->
+  <main class="auth-wrapper">
+    <div class="auth-container glass-card">
+      
+      <!-- Left Column: Brand Showcase -->
+      <section class="auth-showcase">
+        <div class="showcase-badge">
+          <span class="showcase-dot"></span>
+          <span>BUILT FOR HIGH-VELOCITY TEAMS</span>
+        </div>
+
+        <h1 class="showcase-title">
+          Your team's command center for <span class="showcase-highlight">modern execution.</span>
+        </h1>
+
+        <p class="showcase-description">
+          Set up your workspace in seconds. Organize projects, assign tasks across departments, visualize deadlines on the calendar, and measure weekly output.
+        </p>
+
+        <div class="showcase-features">
+          <div class="showcase-feature-item">
+            <div class="showcase-feature-icon teal">
+              <i data-lucide="check-circle-2"></i>
+            </div>
+            <div>
+              <h4>Pre-Loaded Workspace Demo Data</h4>
+              <p>Start with realistic projects, tasks, and team members ready to explore.</p>
+            </div>
+          </div>
+
+          <div class="showcase-feature-item">
+            <div class="showcase-feature-icon coral">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <div>
+              <h4>Persistent LocalStorage Engine</h4>
+              <p>Every project, task, and preference you create stays saved in your browser.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-disclaimer-box">
+          <i data-lucide="shield-alert"></i>
+          <div>
+            <strong>Frontend Demo Registration Notice</strong>
+            <p>Accounts created here are stored locally in your browser's <code>LocalStorage</code> for portfolio demonstration purposes.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Registration Form -->
+      <section class="auth-form-section">
+        <div class="auth-form-header">
+          <h2>Create your account</h2>
+          <p class="text-sm text-secondary">Join Nexora and start collaborating with your team today.</p>
+        </div>
+
+        <div id="auth-error-alert" class="form-alert form-alert-error hidden" role="alert">
+          <i data-lucide="alert-circle"></i>
+          <span id="auth-error-text">Please check the highlighted fields.</span>
+        </div>
+
+        <form id="signup-form" class="auth-form" novalidate>
+          <!-- Full Name & Role Row -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="signup-name" class="form-label">Full Name <span class="required-star">*</span></label>
+              <div class="input-wrapper">
+                <i data-lucide="user" class="input-icon"></i>
+                <input
+                  type="text"
+                  id="signup-name"
+                  name="name"
+                  class="form-input has-icon"
+                  placeholder="Sarah Jenkins"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <span id="signup-name-error" class="field-error hidden"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signup-role" class="form-label">Job Title / Role <span class="required-star">*</span></label>
+              <div class="input-wrapper">
+                <i data-lucide="briefcase" class="input-icon"></i>
+                <select id="signup-role" name="role" class="form-select has-icon" required>
+                  <option value="Product Lead">Product Lead</option>
+                  <option value="Frontend Engineer">Frontend Engineer</option>
+                  <option value="Backend Architect">Backend Architect</option>
+                  <option value="UI/UX Designer">UI/UX Designer</option>
+                  <option value="Engineering Manager">Engineering Manager</option>
+                  <option value="QA Lead">QA Lead</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="signup-email" class="form-label">Work Email <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="mail" class="input-icon"></i>
+              <input
+                type="email"
+                id="signup-email"
+                name="email"
+                class="form-input has-icon"
+                placeholder="sarah@company.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <span id="signup-email-error" class="field-error hidden"></span>
+          </div>
+
+          <!-- Password Field + Strength Meter -->
+          <div class="form-group">
+            <label for="signup-password" class="form-label">Password <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="lock" class="input-icon"></i>
+              <input
+                type="password"
+                id="signup-password"
+                name="password"
+                class="form-input has-icon has-trailing"
+                placeholder="Min. 8 characters, 1 number"
+                autocomplete="new-password"
+                required
+              />
+              <button
+                type="button"
+                class="password-toggle-btn"
+                data-target="signup-password"
+                aria-label="Show password"
+              >
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+            <!-- Password Strength Bar -->
+            <div class="password-strength-wrapper">
+              <div class="strength-bars">
+                <span class="strength-bar" id="strength-bar-1"></span>
+                <span class="strength-bar" id="strength-bar-2"></span>
+                <span class="strength-bar" id="strength-bar-3"></span>
+                <span class="strength-bar" id="strength-bar-4"></span>
+              </div>
+              <span id="strength-label" class="text-xs text-muted">Enter at least 8 characters</span>
+            </div>
+            <span id="signup-password-error" class="field-error hidden"></span>
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div class="form-group">
+            <label for="signup-confirm" class="form-label">Confirm Password <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="shield-check" class="input-icon"></i>
+              <input
+                type="password"
+                id="signup-confirm"
+                name="confirmPassword"
+                class="form-input has-icon has-trailing"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                required
+              />
+              <button
+                type="button"
+                class="password-toggle-btn"
+                data-target="signup-confirm"
+                aria-label="Show confirm password"
+              >
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+            <span id="signup-confirm-error" class="field-error hidden"></span>
+          </div>
+
+          <!-- Remember Me -->
+          <div class="form-row-between">
+            <label class="checkbox-label">
+              <input type="checkbox" id="signup-remember" name="remember" checked />
+              <span class="checkbox-custom"></span>
+              <span class="text-sm text-secondary">Keep me signed in on this browser</span>
+            </label>
+          </div>
+
+          <!-- Submit CTA -->
+          <button type="submit" id="signup-submit-btn" class="btn btn-accent btn-full auth-submit-btn">
+            <span>Create Workspace Account</span>
+            <i data-lucide="sparkles"></i>
+          </button>
+        </form>
+
+        <div class="auth-footer-links">
+          <p class="text-sm text-secondary">
+            Already have an account?
+            <a href="login.html" class="auth-link">Sign in here →</a>
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Auth Module Script -->
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

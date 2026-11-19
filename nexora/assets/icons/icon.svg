@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Deep Teal Glass Base -->
+    <linearGradient id="nexoraBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E2E2B" />
+      <stop offset="60%" stop-color="#17645F" />
+      <stop offset="100%" stop-color="#1E7A74" />
+    </linearGradient>
+
+    <!-- Subtle Ambient Coral Glow -->
+    <radialGradient id="coralGlow" cx="85%" cy="85%" r="60%">
+      <stop offset="0%" stop-color="#FF6845" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#FF6845" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Coral Nexus Diagonal Gradient -->
+    <linearGradient id="coralBar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7F5F" />
+      <stop offset="100%" stop-color="#FF5733" />
+    </linearGradient>
+
+    <!-- Frosted Ivory Glass Pillar Gradient -->
+    <linearGradient id="ivoryGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98" />
+      <stop offset="100%" stop-color="#F3EEE8" stop-opacity="0.82" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded App Icon Container -->
+  <rect width="512" height="512" rx="116" fill="url(#nexoraBg)" />
+  <rect width="512" height="512" rx="116" fill="url(#coralGlow)" />
+
+  <!-- Specular Glass Inner Border -->
+  <rect x="14" y="14" width="484" height="484" rx="102" fill="none" stroke="#F3EEE8" stroke-opacity="0.22" stroke-width="4" />
+
+  <!-- Geometric "N" Nexus Mark -->
+  <!-- Left Ivory Pillar -->
+  <rect x="138" y="132" width="54" height="248" rx="27" fill="url(#ivoryGlass)" />
+
+  <!-- Right Ivory Pillar -->
+  <rect x="320" y="132" width="54" height="248" rx="27" fill="url(#ivoryGlass)" fill-opacity="0.88" />
+
+  <!-- Connecting Coral Diagonal Beam -->
+  <line x1="165" y1="159" x2="347" y2="353" stroke="url(#coralBar)" stroke-width="54" stroke-linecap="round" />
+
+  <!-- Crisp Accent Node on Top-Left Vertex -->
+  <circle cx="165" cy="159" r="11" fill="#F3EEE8" fill-opacity="0.95" />
+</svg>

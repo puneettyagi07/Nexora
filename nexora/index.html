@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexora — Plan smarter. Collaborate better. Get things done.</title>
+  <meta name="description" content="Nexora is a modern project management SaaS platform for high-performing teams." />
+  <meta name="theme-color" content="#17645F" />
+
+  <!-- PWA Manifest & App Icons -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/kanban.css" />
+  <link rel="stylesheet" href="css/calendar.css" />
+  <link rel="stylesheet" href="css/analytics.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- Lucide Icons & Chart.js CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb orb-teal"></div>
+    <div class="ambient-orb orb-coral"></div>
+    <div class="ambient-orb orb-ivory"></div>
+  </div>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop hidden"></div>
+
+  <div id="app-shell" class="app-shell">
+    <!-- ==================== SIDEBAR NAVIGATION ==================== -->
+    <aside id="sidebar" class="sidebar" aria-label="Main Navigation">
+      <div class="sidebar-header">
+       <a href="#dashboard" class="brand-logo">
+          <div class="brand-icon">
+            <img src="assets/icons/icon.svg" alt="Nexora Logo" class="brand-logo-img" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">Nexora</span>
+            <span class="brand-tagline">Plan smarter.</span>
+          </div>
+        </a>
+        <button id="sidebar-collapse-btn" class="icon-btn sidebar-toggle-desktop" title="Toggle Sidebar" aria-label="Toggle Sidebar">
+          <i data-lucide="panel-left-close"></i>
+        </button>
+        <button id="sidebar-close-mobile" class="icon-btn sidebar-toggle-mobile" title="Close Menu" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-cta">
+        <button id="sidebar-quick-task-btn" class="btn btn-accent btn-full" title="Shortcut: N">
+          <i data-lucide="plus-circle"></i>
+          <span class="nav-label">New Task</span>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <span class="nav-group-title">Workspace</span>
+          <ul class="nav-list">
+            <li><a href="#dashboard" class="nav-link active" data-route="dashboard"><i data-lucide="layout-dashboard"></i><span class="nav-label">Dashboard</span></a></li>
+            <li><a href="#projects" class="nav-link" data-route="projects"><i data-lucide="folder-kanban"></i><span class="nav-label">Projects</span><span id="nav-badge-projects" class="nav-badge">0</span></a></li>
+            <li><a href="#tasks" class="nav-link" data-route="tasks"><i data-lucide="check-square"></i><span class="nav-label">My Tasks</span><span id="nav-badge-tasks" class="nav-badge">0</span></a></li>
+            <li><a href="#kanban" class="nav-link" data-route="kanban"><i data-lucide="columns-3"></i><span class="nav-label">Kanban Board</span></a></li>
+            <li><a href="#calendar" class="nav-link" data-route="calendar"><i data-lucide="calendar-days"></i><span class="nav-label">Calendar</span></a></li>
+          </ul>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-group-title">Collaboration & Insights</span>
+          <ul class="nav-list">
+            <li><a href="#team" class="nav-link" data-route="team"><i data-lucide="users"></i><span class="nav-label">Team</span><span id="nav-badge-team" class="nav-badge">0</span></a></li>
+            <li><a href="#notifications" class="nav-link" data-route="notifications"><i data-lucide="bell"></i><span class="nav-label">Notifications</span><span id="nav-badge-notifications" class="nav-badge badge-coral hidden">0</span></a></li>
+            <li><a href="#analytics" class="nav-link" data-route="analytics"><i data-lucide="bar-chart-3"></i><span class="nav-label">Analytics</span></a></li>
+          </ul>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-group-title">Account</span>
+          <ul class="nav-list">
+            <li><a href="#profile" class="nav-link" data-route="profile"><i data-lucide="user-circle"></i><span class="nav-label">User Profile</span></a></li>
+            <li><a href="#settings" class="nav-link" data-route="settings"><i data-lucide="settings"></i><span class="nav-label">Settings</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user-card">
+          <div id="sidebar-user-avatar" class="avatar avatar-md" style="background: var(--color-coral-accent);">TF</div>
+          <div class="sidebar-user-info">
+            <p id="sidebar-user-name" class="sidebar-user-name">Workspace User</p>
+            <p id="sidebar-user-role" class="sidebar-user-role">Owner</p>
+          </div>
+          <button id="sidebar-logout-btn" class="icon-btn sidebar-logout" title="Log Out" aria-label="Log Out">
+            <i data-lucide="log-out"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT AREA ==================== -->
+    <div class="main-wrapper">
+      <header class="topbar glass-panel">
+        <div class="topbar-left">
+          <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Open Navigation">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="breadcrumb-wrapper">
+            <h1 id="topbar-page-title" class="page-title">Dashboard</h1>
+            <span id="topbar-page-subtitle" class="page-subtitle">Plan smarter. Collaborate better. Get things done.</span>
+          </div>
+        </div>
+
+        <!-- Linear-Style Command Palette Trigger -->
+        <div class="topbar-center">
+          <button id="global-search-trigger" class="search-trigger-btn" type="button" aria-label="Open Command Palette">
+            <i data-lucide="terminal"></i>
+            <span>Commands or search...</span>
+            <kbd class="search-shortcut">Ctrl K</kbd>
+          </button>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Offline Status Pill (Visible automatically when offline) -->
+          <span id="offline-status-pill" class="offline-pill hidden" title="Offline Mode Active">
+            <i data-lucide="wifi-off" style="width:13px;height:13px;"></i> Offline
+          </span>
+
+          <!-- PWA Install Button (Appears automatically when browser supports install) -->
+          <button id="topbar-install-pwa-btn" class="btn btn-glass btn-sm hidden" type="button" title="Install Nexora as Offline App">
+            <i data-lucide="download"></i>
+            <span class="hide-md">Install App</span>
+          </button>
+
+          <button id="topbar-new-project-btn" class="btn btn-primary btn-sm hide-sm" title="Shortcut: P">
+            <i data-lucide="folder-plus"></i>
+            <span>New Project</span>
+          </button>
+
+          <button id="topbar-shortcuts-btn" class="icon-btn glass-icon-btn hide-sm" title="Keyboard Shortcuts (?)" aria-label="Keyboard Shortcuts">
+            <i data-lucide="keyboard"></i>
+          </button>
+
+          <button id="topbar-tour-btn" class="icon-btn glass-icon-btn" title="Start Interactive Tutorial" aria-label="Start Interactive Tutorial">
+            <i data-lucide="help-circle"></i>
+          </button>
+
+          <button id="theme-toggle-btn" class="icon-btn glass-icon-btn" title="Switch Theme (T)" aria-label="Switch Theme">
+            <i data-lucide="moon" id="theme-icon"></i>
+          </button>
+
+          <!-- Notification Dropdown -->
+          <div class="dropdown-wrapper">
+            <button id="topbar-notif-btn" class="icon-btn glass-icon-btn" title="Notifications" aria-label="Notifications">
+              <i data-lucide="bell"></i>
+              <span id="topbar-notif-dot" class="notif-dot hidden"></span>
+            </button>
+            <div id="topbar-notif-dropdown" class="dropdown-menu notif-dropdown glass-card hidden">
+              <div class="dropdown-header">
+                <span class="dropdown-title">Notifications</span>
+                <button id="topbar-mark-all-read" class="text-btn" type="button">Mark all read</button>
+              </div>
+              <div id="topbar-notif-list" class="notif-dropdown-list"></div>
+              <div class="dropdown-footer">
+                <a href="#notifications" class="dropdown-footer-link" id="view-all-notifs-link">View all notifications →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Profile Dropdown -->
+          <div class="dropdown-wrapper">
+            <button id="topbar-user-btn" class="user-pill-btn" type="button" aria-label="User Menu">
+              <div id="topbar-user-avatar" class="avatar avatar-sm" style="background: var(--color-teal-primary);">TF</div>
+              <span id="topbar-user-name" class="hide-md">User</span>
+              <i data-lucide="chevron-down" class="icon-xs"></i>
+            </button>
+
+            <div id="topbar-user-dropdown" class="dropdown-menu user-dropdown glass-card hidden">
+              <div class="user-dropdown-header">
+                <p id="dropdown-user-name" class="font-semibold">Workspace User</p>
+                <p id="dropdown-user-email" class="text-xs text-muted">user@Nexora.io</p>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a href="#profile" class="dropdown-item"><i data-lucide="user"></i> My Profile</a>
+              <a href="#settings" class="dropdown-item"><i data-lucide="sliders"></i> Preferences</a>
+              <button id="dropdown-shortcuts-btn" class="dropdown-item" type="button">
+                <i data-lucide="keyboard"></i> Keyboard Shortcuts (?)
+              </button>
+              <button id="dropdown-replay-tour-btn" class="dropdown-item" type="button">
+                <i data-lucide="compass"></i> Replay Tutorial
+              </button>
+              <div class="dropdown-divider"></div>
+              <button id="topbar-logout-btn" class="dropdown-item text-danger" type="button">
+                <i data-lucide="log-out"></i> Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="app-view-container" class="view-container" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <!-- Universal Glass Modal -->
+  <div id="modal-root" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="modal-dialog" class="modal-glass">
+      <div class="modal-header">
+        <h2 id="modal-title" class="modal-title">Modal Title</h2>
+        <button id="modal-close-btn" class="icon-btn" type="button" aria-label="Close Modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div id="modal-body" class="modal-body"></div>
+      <div id="modal-footer" class="modal-footer"></div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "Nexora",
+  "short_name": "Nexora",
+  "description": "Plan smarter. Collaborate better. Get things done. A glassmorphic, offline-ready project management workspace.",
+  "start_url": "./login.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F3EEE8",
+  "theme_color": "#17645F",
+  "categories": ["productivity", "business", "utilities"],
+  "icons": [
+    {
+      "src": "./assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

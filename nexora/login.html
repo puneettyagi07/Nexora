@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#17645F" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg" />
+  <title>Sign In — Nexora SaaS Platform</title>
+  <meta name="description" content="Sign in to your Nexora workspace. Plan smarter. Collaborate better. Get things done." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-page="login">
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb orb-teal"></div>
+    <div class="ambient-orb orb-coral"></div>
+    <div class="ambient-orb orb-ivory"></div>
+  </div>
+
+  <header class="auth-topbar">
+    <a href="login.html" class="brand-logo">
+      <div class="brand-icon" style="width: 38px; height: 38px; border-radius: var(--radius-sm); background: transparent; overflow: hidden; padding: 0; flex-shrink: 0;">
+        <img src="assets/icons/icon.svg" alt="Nexora Logo" class="brand-logo-img" style="width: 100%; height: 100%; display: block; object-fit: cover;" />
+      </div>
+      <div class="brand-text">
+        <span class="brand-name" style="color: var(--text-primary);">Nexora</span>
+        <span class="brand-tagline" style="color: var(--text-secondary);">Plan smarter.</span>
+      </div>
+    </a>
+
+    <div class="flex items-center gap-3">
+      <button id="auth-theme-toggle" class="icon-btn glass-icon-btn" type="button" title="Toggle Theme" aria-label="Toggle Theme">
+        <i data-lucide="moon" id="auth-theme-icon"></i>
+      </button>
+      <a href="signup.html" class="btn btn-accent btn-sm">Create Account</a>
+    </div>
+  </header>
+
+  <main class="auth-wrapper">
+    <div class="auth-container glass-card">
+      <!-- Left Showcase -->
+      <section class="auth-showcase">
+        <div class="showcase-badge">
+          <span class="showcase-dot"></span>
+          <span>FRESH WORKSPACE • GUIDED ONBOARDING</span>
+        </div>
+
+        <h1 class="showcase-title">
+          Plan smarter.<br />
+          Collaborate better.<br />
+          <span class="showcase-highlight">Get things done.</span>
+        </h1>
+
+        <p class="showcase-description">
+          Create your own clean workspace from scratch. Organize your projects, drag tasks across Kanban boards, schedule deadlines on the calendar, and track progress with live analytics.
+        </p>
+
+        <div class="showcase-features">
+          <div class="showcase-feature-item">
+            <div class="showcase-feature-icon teal"><i data-lucide="compass"></i></div>
+            <div>
+              <h4>Interactive First-Time Walkthrough</h4>
+              <p>New to Nexora? Our built-in guided tour shows you every tool step by step.</p>
+            </div>
+          </div>
+
+          <div class="showcase-feature-item">
+            <div class="showcase-feature-icon coral"><i data-lucide="database"></i></div>
+            <div>
+              <h4>100% Your Own Data</h4>
+              <p>Start with an empty canvas—everything you create saves privately in your browser.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-disclaimer-box">
+          <i data-lucide="shield-alert"></i>
+          <div>
+            <strong>Local Browser Storage Notice</strong>
+            <p>Accounts and workspace data are stored locally in your browser's <code>LocalStorage</code> and <code>SessionStorage</code> for frontend use.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Login Form -->
+      <section class="auth-form-section">
+        <div class="auth-form-header">
+          <h2>Sign in to Nexora</h2>
+          <p class="text-sm text-secondary">New here? Create an account or launch a fresh guest workspace.</p>
+        </div>
+
+        <!-- Quick Fresh Guest Workspace Option -->
+        <div class="demo-credentials-banner">
+          <div>
+            <span class="text-xs font-semibold text-teal">FIRST TIME HERE?</span>
+            <p class="text-xs text-secondary">Launch an empty workspace + guided tour immediately.</p>
+          </div>
+          <button type="button" id="start-guest-btn" class="btn btn-glass btn-sm">
+            <i data-lucide="rocket"></i> Start Fresh Guest
+          </button>
+        </div>
+
+        <div id="auth-error-alert" class="form-alert form-alert-error hidden" role="alert">
+          <i data-lucide="alert-circle"></i>
+          <span id="auth-error-text">Invalid email or password.</span>
+        </div>
+
+        <form id="login-form" class="auth-form" novalidate>
+          <div class="form-group">
+            <label for="login-email" class="form-label">Work Email <span class="required-star">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="mail" class="input-icon"></i>
+              <input
+                type="email"
+                id="login-email"
+                name="email"
+                class="form-input has-icon"
+                placeholder="you@company.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+            <span id="login-email-error" class="field-error hidden"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="flex justify-between items-center">
+              <label for="login-password" class="form-label">Password <span class="required-star">*</span></label>
+              <button type="button" id="forgot-password-link" class="text-btn text-xs">Need help?</button>
+            </div>
+            <div class="input-wrapper">
+              <i data-lucide="lock" class="input-icon"></i>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="form-input has-icon has-trailing"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" class="password-toggle-btn" data-target="login-password" aria-label="Show password">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+            <span id="login-password-error" class="field-error hidden"></span>
+          </div>
+
+          <div class="form-row-between">
+            <label class="checkbox-label">
+              <input type="checkbox" id="login-remember" name="remember" checked />
+              <span class="text-sm text-secondary">Remember me on this device</span>
+            </label>
+          </div>
+
+          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-full auth-submit-btn">
+            <span>Sign In to Workspace</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="auth-footer-links">
+          <p class="text-sm text-secondary">
+            Don't have an account yet?
+            <a href="signup.html" class="auth-link">Create your free workspace →</a>
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

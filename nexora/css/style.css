@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Nexora - BASE RESET, TYPOGRAPHY & GLASSMORPHISM UTILITIES
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* --- Ambient Glassmorphic Background Orbs --- */
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(circle at 15% 15%, rgba(23, 100, 95, 0.09), transparent 45%),
+              radial-gradient(circle at 85% 20%, rgba(255, 104, 69, 0.09), transparent 40%),
+              radial-gradient(circle at 50% 85%, rgba(23, 100, 95, 0.07), transparent 50%);
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.55;
+}
+
+.orb-teal {
+  width: 480px;
+  height: 480px;
+  background: rgba(23, 100, 95, 0.16);
+  top: -120px;
+  left: 18%;
+}
+
+.orb-coral {
+  width: 420px;
+  height: 420px;
+  background: rgba(255, 104, 69, 0.14);
+  bottom: -100px;
+  right: 8%;
+}
+
+.orb-ivory {
+  width: 360px;
+  height: 360px;
+  background: rgba(23, 100, 95, 0.10);
+  top: 42%;
+  left: 55%;
+}
+
+/* --- Glassmorphism Surface Classes --- */
+.glass-card {
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border: var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.glass-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: var(--glass-surface-elevated);
+}
+
+.glass-panel {
+  background: var(--glass-surface-elevated);
+  backdrop-filter: var(--glass-blur-md);
+  -webkit-backdrop-filter: var(--glass-blur-md);
+  border-bottom: var(--glass-border);
+}
+
+/* --- Typography & Links --- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* --- Utility Classes --- */
+.hidden {
+  display: none !important;
+}
+
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-muted { color: var(--text-muted); }
+.text-secondary { color: var(--text-secondary); }
+.text-teal { color: var(--color-teal-primary); }
+.text-coral { color: var(--color-coral-accent); }
+.text-danger { color: var(--status-danger); }
+.text-success { color: var(--status-success); }
+
+.font-medium { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold { font-weight: var(--weight-bold); }
+
+/* --- Custom Scrollbars --- */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(23, 100, 95, 0.22);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(23, 100, 95, 0.4);
+}

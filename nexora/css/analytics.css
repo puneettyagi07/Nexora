@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Nexora - MODULE 9: ANALYTICS & REPORTS (css/analytics.css)
+   Theme: Warm Ivory (#F3EEE8), Deep Teal Green (#17645F), Coral Orange (#FF6845)
+   ========================================================================== */
+
+/* --- Analytics Filter & Export Toolbar --- */
+.analytics-toolbar {
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.analytics-filters-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.analytics-export-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* --- 2-Column Charts Grid --- */
+.analytics-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.analytics-card {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.analytics-card.span-full {
+  grid-column: 1 / -1;
+}
+
+.analytics-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.analytics-card-title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.analytics-card-title svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-teal-primary);
+}
+
+.analytics-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+}
+
+.analytics-canvas-container.tall {
+  height: 310px;
+}
+
+/* --- Project Progress Visualization List --- */
+.project-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.project-progress-item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--glass-surface-subtle);
+  border: var(--glass-border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-progress-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* --- Overdue Analytics List --- */
+.overdue-analytics-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.overdue-analytics-item {
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-sm);
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  border-left: 4px solid var(--status-danger);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.analytics-stat-pills {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+  border-top: var(--glass-border-subtle);
+}
+
+@media (max-width: 1024px) {
+  .analytics-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}

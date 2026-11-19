@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Nexora - RESPONSIVE BREAKPOINTS (DESKTOP, TABLET, MOBILE)
+   ========================================================================== */
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .hide-md {
+    display: none !important;
+  }
+
+  .topbar-center {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: inline-flex;
+  }
+
+  .hide-sm {
+    display: none !important;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    width: 270px !important;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle-desktop {
+    display: none;
+  }
+
+  .sidebar-toggle-mobile {
+    display: inline-flex;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 28, 27, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 95;
+  }
+
+  .main-wrapper,
+  .app-shell.sidebar-collapsed .main-wrapper {
+    margin-left: 0;
+  }
+
+  .topbar {
+    padding: 0 var(--space-4);
+  }
+
+  .page-subtitle {
+    display: none;
+  }
+
+  .view-container {
+    padding: var(--space-4);
+  }
+
+  .search-shortcut {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar-center {
+    display: none;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
